@@ -1,0 +1,87 @@
+Para una guía con imágenes de la instalación y ejecución, se recomienda ver la guía localizada
+en el capítulo 7 de la memoria de este TFG. Se mostrará aquí el mismo texto.
+
+Herramientas necesarias:
+* Truffle -> Abrimos la consola desde la carpeta /Contracts e introducimos el siguiente 
+comando para una instalación de manera global -> npm install -g truffle.
+* Node -> https://nodejs.org/es/download/releases/ y buscamos la versión 16.15.0 Gallium.
+* Ganache -> https://github.com/trufflesuite/ganache-ui/releases/tag/v2.5.4
+
+
+Abriremos Ganache y pulsamos sobre ``New Workspace Ethereum`` el cuál
+ nos dotará de un espacio de pruebas siempre igual, al contrario que con
+ ``QuickStart Ethereum``. 
+Podemos dejar los valores que se encuentran por defecto puesto que más tarde entraremos
+ a la configuración. Aunque, se recomienda añadir una cuenta con su frase semilla,
+ nos ahorrará pasos más adelante.
+
+
+Una vez iniciado, pulsaremos en el icono de los ajustes que se encuentra arriba a la derecha.
+ Para empezar, deberíamos añadir nuestro truffle-config.js a nuestro entorno. 
+
+Comprobamos, abriendo nuestro truffle-config.js dentro de la carpeta /Contracts
+ que los valores de la línea 44, 45 y 46, Host, Port y Network Id,
+ son como se ve en la pestaña "Server",
+ pero al ser los valores por defecto no necesitan estar sin comentarios.
+
+
+Instalaremos todas las dependencias de NPM abriendo una consola y escribiendo:
+npm install
+
+
+Necesitaremos la herramienta que conecta nuestro front-end con nuestro back-end,
+ en este caso la blockchain. Para ello, usaremos Metamask.
+ Para su instalación entraremos en la Chrome Web Store y buscamos Metamask,
+ o podemos hacerlo desde el siguiente enlace:
+  https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn.
+Tras añadirlo, se nos abrirá la pantalla de bienvenida y pulsamos en empezar. 
+Si Por algún casual, no se abriera, simplemente debemos ir a nuestras extensiones y
+ pulsar sobre esta.
+
+
+Si se están realizando estos pasos antes de preparar Ganache, deberemos pulsar en
+ ``Crear cartera`` y seguir los pasos necesarios hasta su finalización, 
+y más tarde en la instalación de Ganache, añadir la frase semilla mientras creamos
+ nuestro entorno.
+
+Si, por el contrario, hemos instalado Ganache primero, pulsaremos sobre Importar cartera,
+ ya que Ganache nos proporciona una frase semilla al crear el entorno.
+ Para obtenerla, simplemente abriremos Ganache y seleccionaremos nuestro entorno ya creado,
+ y en la pestaña de Accounts copiaremos las 12 palabras que se encuentras en ``MNEMONIC``.
+
+
+Estas 12 palabras en inglés son la frase semilla, que dan acceso a nuestra cartera
+ a cualquier persona que cuente con ellas, y por tanto hacer transacciones y firmar desde 
+ella.
+
+Pegamos las 12 palabras en el orden en el que se nos pide, o todas en la primera casilla y
+ se nos rellenará el resto con las demás palabras de la frase. 
+Por último, nos pedirá una contraseña para acceder y ya tendríamos la billetera importada.
+
+Ahora, seleccionaremos la red de pruebas que usamos en Ganache, ya que Metamask,
+ por defecto, usa la red principal de Ethereum. Para ello,
+ si hemos cerrado la pestaña, pulsaremos sobre nuestra extensión y
+ tendríamos la vista simplificada de la pestaña. Buscamos el botón
+ en el que pone "Show/Hide test networks".
+
+
+
+Por último, iremos a la pestaña de ``Redes`` y modificaremos el puerto de la URL de RPC
+ de LocalHost para que aparezca con el puerto 7545. Aquí puede darnos algún error,
+ pero simplemente reintentándolo se puede conseguir.
+
+
+Previo a poder desplegar la aplicación, debemos desplegar los contratos inteligentes
+ desarrollados en nuestra red de pruebas, para poder interactuar con ellos,
+ almacenando y obteniendo los datos almacenados.
+Para ello, abriremos una consola de comandos desde el directorio raíz y
+ escribimos lo siguiente:
+cd src
+cd Contracts
+truffle migrate
+
+
+
+Por ultimo desde el directorio raíz, escribimos "npm run start" y tras esperar unos segundos,
+se nos abrirá el navegador con la dirección http://localhost:3000/ y la aplicación corriendo.
+
